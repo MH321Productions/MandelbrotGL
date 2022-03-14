@@ -5,7 +5,7 @@ Ein Standalone-Programm, das die Mandelbrot-Menge mit OpenGL 3.3 rendert.
 Kompiliert und getestet mit Windows und Linux Ubuntu (lässt sich dort
 per Doppelklick öffnen).
 
-![Hauptbildschirm](https://raw.githubusercontent.com/MH321Productions/MandelbrotGL/main/Screenshots/Main.png)
+![Hauptbildschirm](https://raw.githubusercontent.com/MH321Productions/MandelbrotGL/main/Main.png)
 
 ## Bedienung
 
