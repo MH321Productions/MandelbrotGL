@@ -1,0 +1,15 @@
+[submodule "PC/lib/SDL"]
+	path = PC/lib/SDL
+	url = https://github.com/libsdl-org/SDL.git
+[submodule "PC/lib/stb"]
+	path = PC/lib/stb
+	url = https://github.com/nothings/stb.git
+[submodule "PC/lib/glm"]
+	path = PC/lib/glm
+	url = https://github.com/g-truc/glm.git
+[submodule "PC/lib/freetype"]
+	path = PC/lib/freetype
+	url = https://gitlab.freedesktop.org/freetype/freetype.git
+[submodule "PC/lib/portable-file-dialogs"]
+	path = PC/lib/portable-file-dialogs
+	url = https://github.com/samhocevar/portable-file-dialogs.git
