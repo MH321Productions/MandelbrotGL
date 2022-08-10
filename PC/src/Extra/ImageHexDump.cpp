@@ -64,7 +64,7 @@ bool dumpImages(const path& imagePath, const path& includePath) {
 
 bool processFile(const path& in, const path& out, const bool& firstItem) {
     ostringstream str;
-    str << "xxd -i \"" << in.filename().string() << "\"";
+    str << "xxd -i \"" << in.filename().string() << "\" | sed -r \"s/, /,/g\" | tr -d '\n'";
     if (firstItem) str << " > \"";
     else str << " >> \"";
     str << out.string() << "\"";

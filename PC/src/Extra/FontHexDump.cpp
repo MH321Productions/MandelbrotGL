@@ -51,7 +51,7 @@ bool dumpFonts(const path& fontPath, const path& includePath) {
     file.open(fontFile, ios_base::openmode::_S_app);
     if (!file) return false;
 
-    file << "}" << endl;
+    file << "\n}" << endl;
     file.close();
 
     //Ausgaben Checken
