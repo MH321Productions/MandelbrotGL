@@ -38,4 +38,4 @@ Screenshots/
 
 #Must exclude Fonts.hpp bc it's too big for git
 include/Fonts.hpp
-res/*/index.txt
+res/*/Index.txt
