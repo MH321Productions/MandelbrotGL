@@ -1,6 +1,7 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <SDL.h>
+#define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb_image_write.h>
 #include <portable-file-dialogs.h>
 
