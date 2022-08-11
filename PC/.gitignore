@@ -35,6 +35,7 @@
 .vscode/
 bin/
 Screenshots/
+*.png
 
 #Must exclude Fonts.hpp bc it's too big for git
 include/Fonts.hpp
