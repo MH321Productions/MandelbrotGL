@@ -17,7 +17,7 @@ add_subdirectory(lib/glew/build/cmake)
 include_directories(lib/glew/include)
 add_subdirectory(lib/SDL)
 include_directories(lib/SDL/include)
-include_directories(lib/portable-file-dialogs)
+#include_directories(lib/portable-file-dialogs)
 
 
 #Subdirectories Plattformabhängig
