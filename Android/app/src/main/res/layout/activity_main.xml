@@ -6,13 +6,165 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <io.github.mh321productions.mandelbrot.MandelbrotView
+        android:id="@+id/mandelbrotView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/viewOptions"
+        style="@style/Theme.Mandelbrot"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioGroup
+                android:id="@+id/rdbtnGroupFirst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkedButton="@id/rdbtnFirstNone"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.02"
+                app:layout_constraintStart_toEndOf="@+id/txtPrimColor"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <RadioButton
+                    android:id="@+id/rdbtnFirstNone"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/rdbtn_none_en" />
+
+                <RadioButton
+                    android:id="@+id/rdbtnFirstRed"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/rdbtn_red_en" />
+
+                <RadioButton
+                    android:id="@+id/rdbtnFirstGreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/rdbtn_green_en" />
+
+                <RadioButton
+                    android:id="@+id/rdbtnFirstBlue"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/rdbtn_blue_en" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtPrimColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_prim_color_en"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.17000002" />
+
+            <TextView
+                android:id="@+id/txtSecColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_sec_color_en"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.025"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.802" />
+
+            <RadioGroup
+                android:id="@+id/rdbtnGroupSec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkedButton="@id/rdbtnSecNone"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.02"
+                app:layout_constraintStart_toEndOf="@+id/txtSecColor"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0">
+
+                <RadioButton
+                    android:id="@+id/rdbtnSecNone"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:enabled="false"
+                    android:text="@string/rdbtn_none_en" />
+
+                <RadioButton
+                    android:id="@+id/rdbtnSecRed"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:enabled="false"
+                    android:text="@string/rdbtn_red_en" />
+
+                <RadioButton
+                    android:id="@+id/rdbtnSecGreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:enabled="false"
+                    android:text="@string/rdbtn_green_en" />
+
+                <RadioButton
+                    android:id="@+id/rdbtnSecBlue"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:enabled="false"
+                    android:text="@string/rdbtn_blue_en" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_save_en"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.975"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.029999971" />
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_reset_en"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.975"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.98" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
