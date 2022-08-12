@@ -15,9 +15,11 @@ public class MandelbrotView extends GLSurfaceView {
     private MandelbrotRenderer renderer;
     private MandelbrotControls controls;
     private AssetManager assMan;
+    private MainActivity main;
 
     public MandelbrotView(Context context) {
         super(context);
+        main = (context instanceof MainActivity) ? (MainActivity) context : null;
         assMan = context.getAssets();
         scaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         moveDetector = new GestureDetector(context, new MoveListener());
@@ -26,6 +28,7 @@ public class MandelbrotView extends GLSurfaceView {
 
     public MandelbrotView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        main = (context instanceof MainActivity) ? (MainActivity) context : null;
         assMan = context.getAssets();
         scaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         moveDetector = new GestureDetector(context, new MoveListener());
@@ -33,9 +36,10 @@ public class MandelbrotView extends GLSurfaceView {
     }
 
     private void init() {
-        setEGLContextClientVersion(2);
+        setEGLContextClientVersion(3);
         setPreserveEGLContextOnPause(true);
-        renderer = new MandelbrotRenderer(this, (MainActivity) getParent(), assMan);
+        renderer = new MandelbrotRenderer(this, main, assMan);
+        controls = renderer.controls;
         setRenderer(renderer);
     }
 
@@ -46,19 +50,20 @@ public class MandelbrotView extends GLSurfaceView {
         return true;
     }
 
-    private static class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
-            //renderer.scale(detector.getScaleFactor());
+            controls.changeScale(detector.getScaleFactor());
 
             return true;
         }
     }
 
-    private static class MoveListener extends GestureDetector.SimpleOnGestureListener {
+    private class MoveListener extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             //renderer.touch(-distanceX, -distanceY);
+            controls.move(distanceX, distanceY);
             return true;
         }
     }

@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<RadioButton> colorButtons;
     private RadioGroup groupFirst, groupSec;
     private Button btnSave, btnReset;
-    private MandelbrotControls mandelControls = null;
+    private MandelbrotControls controls = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +55,9 @@ public class MainActivity extends AppCompatActivity {
         );
         // Hide both the status bar and the navigation bar
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+    }
+
+    public void setControls(MandelbrotControls controls) {
+        this.controls = controls;
     }
 }
