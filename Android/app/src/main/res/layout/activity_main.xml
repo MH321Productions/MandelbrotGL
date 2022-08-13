@@ -22,7 +22,6 @@
         style="@style/Theme.Mandelbrot"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -140,7 +139,7 @@
             </RadioGroup>
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/btnInvert"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="@string/txt_invert_en"
@@ -179,8 +178,8 @@
         android:tooltipText="@string/txt_reset_en"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/btnSave"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.045"
         app:srcCompat="@drawable/ic_reset_icon" />
@@ -191,6 +190,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:contentDescription="@string/txt_options_en"
+        android:enabled="false"
         android:tooltipText="@string/txt_options_en"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
