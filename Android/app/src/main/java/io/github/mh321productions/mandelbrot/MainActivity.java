@@ -4,10 +4,15 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.loader.ResourcesProvider;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -29,6 +34,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
@@ -36,12 +42,28 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     private BottomNavigationView viewOptions;
     private ArrayList<RadioButton> colorButtons;
     private RadioGroup groupFirst, groupSec;
-    private FloatingActionButton btnSave, btnReset, btnOptions;
+    private FloatingActionButton btnSave, btnReset, btnOptions, btnLang;
     private CheckBox btnInvert;
     private TextView txtIterate, txtThreshold;
     private SeekBar sbIterate, sbThreshold;
     private MandelbrotControls controls = null;
     private AnimatorSet currentSet = null;
+    private int currentLanguage = 0;
+
+    private static final ArrayList<String> supportedLanguages;
+    private static final ArrayList<Integer> flagIds;
+
+    static {
+        supportedLanguages = new ArrayList<>(3);
+        Collections.addAll(supportedLanguages, "en", "de", "fr");
+
+        flagIds = new ArrayList<>(3);
+        Collections.addAll(flagIds,
+                R.drawable.ic_flag_en,
+                R.drawable.ic_flag_de,
+                R.drawable.ic_flag_fr
+        );
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +87,10 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
         btnInvert = findViewById(R.id.btnInvert);
         btnInvert.setOnClickListener(this::onInvert);
+
+        btnLang = findViewById(R.id.btnLang);
+        btnLang.setOnClickListener(this::onLang);
+        btnLang.setImageResource(flagIds.get(currentLanguage));
 
         txtThreshold = findViewById(R.id.txtThreshold);
         txtThreshold.setText(getString(R.string.txt_threshold_en, 2.5));
@@ -115,6 +141,22 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         }, 250);
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(updateContextLocale(newBase));
+    }
+
+    private Context updateContextLocale(Context context) {
+        String lang = PreferenceManager.getDefaultSharedPreferences(context).getString("pref_key_language", "en");
+        currentLanguage = supportedLanguages.indexOf(lang);
+        System.out.println("Language: " + currentLanguage);
+        Locale l = new Locale(lang);
+        Locale.setDefault(l);
+        Configuration config = context.getResources().getConfiguration();
+        config.setLocale(l);
+        return context.createConfigurationContext(config);
+    }
+
     public void setControls(MandelbrotControls controls) {
         this.controls = controls;
     }
@@ -126,6 +168,21 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
     private void onSave(View v) {
         //TODO: Implement save
+
+
+        Intent i = new Intent(Intent.ACTION_APPLICATION_PREFERENCES);
+        startActivity(i);
+    }
+
+    private void onLang(View v) {
+        currentLanguage++;
+        if (currentLanguage == 3) currentLanguage = 0;
+
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        editor.putString("pref_key_language", supportedLanguages.get(currentLanguage));
+        editor.apply();
+
+        recreate();
     }
 
     private void onReset(View v) {

@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_flag_de.xml" value="0.3105" />
+        <entry key="app/src/main/res/drawable/ic_flag_en.xml" value="0.3105" />
+        <entry key="app/src/main/res/drawable/ic_flag_fr.xml" value="0.3105" />
         <entry key="app/src/main/res/drawable/ic_options_icon.xml" value="0.3105" />
         <entry key="app/src/main/res/drawable/ic_reset_icon.xml" value="0.3105" />
         <entry key="app/src/main/res/drawable/ic_save_icon.xml" value="0.3105" />
