@@ -48,25 +48,25 @@
 
                 <RadioButton
                     android:id="@+id/rdbtnFirstNone"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:text="@string/rdbtn_none_en" />
 
                 <RadioButton
                     android:id="@+id/rdbtnFirstRed"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:text="@string/rdbtn_red_en" />
 
                 <RadioButton
                     android:id="@+id/rdbtnFirstGreen"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:text="@string/rdbtn_green_en" />
 
                 <RadioButton
                     android:id="@+id/rdbtnFirstBlue"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:text="@string/rdbtn_blue_en" />
 
@@ -139,32 +139,65 @@
 
             </RadioGroup>
 
-            <Button
-                android:id="@+id/btnSave"
+            <CheckBox
+                android:id="@+id/checkBox"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_save_en"
+                android:layout_height="48dp"
+                android:text="@string/txt_invert_en"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.975"
+                app:layout_constraintHorizontal_bias="0.976"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.029999971" />
-
-            <Button
-                android:id="@+id/btnReset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_reset_en"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.975"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.98" />
+                app:layout_constraintVertical_bias="0.485" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:contentDescription="@string/txt_reset_en"
+        android:tooltipText="@string/txt_save_en"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
+        app:srcCompat="@drawable/ic_save_icon" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:contentDescription="@string/txt_reset_en"
+        android:tooltipText="@string/txt_reset_en"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
+        app:srcCompat="@drawable/ic_reset_icon" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:contentDescription="@string/txt_options_en"
+        android:tooltipText="@string/txt_options_en"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
+        app:srcCompat="@drawable/ic_options_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

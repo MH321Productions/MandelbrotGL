@@ -5,6 +5,7 @@
     <string name="txt_invert_en">Invert colors</string>
     <string name="txt_save_en">Save</string>
     <string name="txt_reset_en">Reset</string>
+    <string name="txt_options_en">Render options</string>
     <string name="rdbtn_none_en">None</string>
     <string name="rdbtn_red_en">Red</string>
     <string name="rdbtn_green_en">Green</string>

@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private MandelbrotView mandelbrotView;
     private ArrayList<RadioButton> colorButtons;
     private RadioGroup groupFirst, groupSec;
-    private Button btnSave, btnReset;
+    private FloatingActionButton btnSave, btnReset;
     private MandelbrotControls controls = null;
 
     @Override
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         groupFirst = findViewById(R.id.rdbtnGroupFirst);
         groupSec = findViewById(R.id.rdbtnGroupSec);
         btnSave = findViewById(R.id.btnSave);
-        btnReset = findViewById(R.id.btnReset);
+        //btnReset = findViewById(R.id.btnReset);
         colorButtons = Lists.newArrayList(
                 findViewById(R.id.rdbtnFirstNone),
                 findViewById(R.id.rdbtnFirstRed),
