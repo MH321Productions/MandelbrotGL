@@ -35,10 +35,3 @@ abgespeichert)
 Anfangswerte (wie im oberen Bild zu sehen) zurück, jedoch nicht die
 Fenstergröße
 - Beenden: Beendet das Programm (duh!)
-
-## Credits
-
-Die Bilder der Widgets des UI und der Font, mit dem die FPS gerendert werden,
-stehen unter einer
-[CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)-Lizenz
-und sind bei [Kenney](https://www.kenney.nl/) zu finden.
