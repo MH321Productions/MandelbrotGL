@@ -4,15 +4,19 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.res.loader.ResourcesProvider;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Adapter;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +30,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
     private MandelbrotView viewMandelbrot;
     private BottomNavigationView viewOptions;
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup groupFirst, groupSec;
     private FloatingActionButton btnSave, btnReset, btnOptions;
     private CheckBox btnInvert;
+    private TextView txtIterate, txtThreshold;
+    private SeekBar sbIterate, sbThreshold;
     private MandelbrotControls controls = null;
     private AnimatorSet currentSet = null;
 
@@ -59,6 +65,18 @@ public class MainActivity extends AppCompatActivity {
 
         btnInvert = findViewById(R.id.btnInvert);
         btnInvert.setOnClickListener(this::onInvert);
+
+        txtThreshold = findViewById(R.id.txtThreshold);
+        txtThreshold.setText(getString(R.string.txt_threshold_en, 2.5));
+
+        txtIterate = findViewById(R.id.txtIterations);
+        txtIterate.setText(getString(R.string.txt_iterations_en, 250));
+
+        sbThreshold = findViewById(R.id.sbThreshold);
+        sbThreshold.setOnSeekBarChangeListener(this);
+
+        sbIterate = findViewById(R.id.sbIterations);
+        sbIterate.setOnSeekBarChangeListener(this);
 
         colorButtons = new ArrayList<>(8);
         Collections.addAll(colorButtons,
@@ -94,9 +112,7 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(() -> {
             btnOptions.setEnabled(true);
             btnOptions.performClick();
-        }, 1500);
-
-        //btnOptions.performClick();
+        }, 250);
     }
 
     public void setControls(MandelbrotControls controls) {
@@ -117,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
         colorButtons.get(0).setChecked(true);
         onColor(colorButtons.get(0));
         btnInvert.setChecked(false);
+        sbIterate.setProgress(250, true);
+        sbThreshold.setProgress(250, true);
     }
 
     private void onColor(View v) {
@@ -175,4 +193,19 @@ public class MainActivity extends AppCompatActivity {
         set.start();
         currentSet = set;
     }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        if (seekBar == sbIterate) {
+            txtIterate.setText(getString(R.string.txt_iterations_en, progress));
+            if (controls != null) controls.setIterations(progress);
+        } else if (seekBar == sbThreshold) {
+            txtThreshold.setText(getString(R.string.txt_threshold_en, progress / 100.0));
+            if (controls != null) controls.setThreshold(progress / 100.0f);
+        }
+    }
+
+    //unused, have to implement them
+    public void onStartTrackingTouch(SeekBar seekBar) {}
+    public void onStopTrackingTouch(SeekBar seekBar) {}
 }
