@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="io.github.mh321productions.mandelbrot">
 
+    <uses-feature android:glEsVersion="0x00030000" android:required="true" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -24,6 +25,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <provider
+            android:authorities="io.github.mh321productions.fileprovider"
+            android:name="io.github.mh321productions.mandelbrot.MyFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files_path"/>
+        </provider>
     </application>
 
 </manifest>

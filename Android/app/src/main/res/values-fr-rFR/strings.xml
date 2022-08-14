@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Mandelbrot</string>
-    <string name="txt_prim_color_en">Couleur primaire:</string>
-    <string name="txt_sec_color_en">Couleur secondaire:</string>
-    <string name="rdbtn_red_en">Rouge</string>
-    <string name="rdbtn_green_en">Vert</string>
-    <string name="rdbtn_blue_en">Bleu</string>
-    <string name="rdbtn_none_en">Aucun</string>
-    <string name="txt_iterations_en">Itérations: %3d</string>
-    <string name="txt_options_en">Afficher les options</string>
-    <string name="txt_invert_en">Inverser les couleurs</string>
-    <string name="txt_save_en">enrigistrer en tant qu\'image</string>
-    <string name="txt_reset_en">Réinitialiser des valeurs</string>
-    <string name="txt_threshold_en">Au seuil: %.2f</string>
+    <string name="txt_prim_color">Couleur primaire:</string>
+    <string name="txt_sec_color">Couleur secondaire:</string>
+    <string name="rdbtn_red">Rouge</string>
+    <string name="rdbtn_green">Vert</string>
+    <string name="rdbtn_blue">Bleu</string>
+    <string name="rdbtn_none">Aucun</string>
+    <string name="txt_iterations">Itérations: %3d</string>
+    <string name="txt_options">Afficher les options</string>
+    <string name="txt_invert">Inverser couleurs</string>
+    <string name="txt_save">enrigistrer en tant qu\'image</string>
+    <string name="txt_reset">Réinitialiser des valeurs</string>
+    <string name="txt_threshold">Au seuil: %.2f</string>
     <string name="txt_lang">Choisir language (actuellement français)</string>
+    <string name="btn_save">Enregistrer</string>
+    <string name="btn_share">Partager</string>
+    <string name="btn_close">Fermer</string>
+    <string name="txt_save_failed">Échec de l\'enregistrement</string>
 </resources>

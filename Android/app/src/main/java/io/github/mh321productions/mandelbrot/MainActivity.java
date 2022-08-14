@@ -5,29 +5,29 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.loader.ResourcesProvider;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.Adapter;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
     private MandelbrotView viewMandelbrot;
     private BottomNavigationView viewOptions;
+    private FragmentContainerView viewSave;
     private ArrayList<RadioButton> colorButtons;
     private RadioGroup groupFirst, groupSec;
     private FloatingActionButton btnSave, btnReset, btnOptions, btnLang;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     private MandelbrotControls controls = null;
     private AnimatorSet currentSet = null;
     private int currentLanguage = 0;
+    private FragmentManager manager;
 
     private static final ArrayList<String> supportedLanguages;
     private static final ArrayList<Integer> flagIds;
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                 R.drawable.ic_flag_de,
                 R.drawable.ic_flag_fr
         );
+
+        System.loadLibrary("mandelbrot");
     }
 
     @Override
@@ -70,9 +74,12 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        manager = getSupportFragmentManager();
+
         //Get instances of the widgets
         viewMandelbrot = findViewById(R.id.mandelbrotView);
         viewOptions = findViewById(R.id.viewOptions);
+        viewSave = findViewById(R.id.viewSave);
         groupFirst = findViewById(R.id.rdbtnGroupFirst);
         groupSec = findViewById(R.id.rdbtnGroupSec);
 
@@ -93,10 +100,10 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         btnLang.setImageResource(flagIds.get(currentLanguage));
 
         txtThreshold = findViewById(R.id.txtThreshold);
-        txtThreshold.setText(getString(R.string.txt_threshold_en, 2.5));
+        txtThreshold.setText(getString(R.string.txt_threshold, 2.5));
 
         txtIterate = findViewById(R.id.txtIterations);
-        txtIterate.setText(getString(R.string.txt_iterations_en, 250));
+        txtIterate.setText(getString(R.string.txt_iterations, 250));
 
         sbThreshold = findViewById(R.id.sbThreshold);
         sbThreshold.setOnSeekBarChangeListener(this);
@@ -161,6 +168,31 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         this.controls = controls;
     }
 
+    public void startFragment(SaveFragment frag) {
+        viewSave.setVisibility(View.VISIBLE);
+        btnLang.setVisibility(View.INVISIBLE);
+        btnSave.setVisibility(View.INVISIBLE);
+        btnOptions.setVisibility(View.INVISIBLE);
+        btnReset.setVisibility(View.INVISIBLE);
+
+        FragmentTransaction trans = manager.beginTransaction();
+        trans.setReorderingAllowed(true);
+        trans.replace(R.id.viewSave, frag);
+        trans.commit();
+    }
+
+    public void stopFragment(SaveFragment frag) {
+        FragmentTransaction trans = manager.beginTransaction();
+        trans.remove(frag);
+        trans.commit();
+
+        viewSave.setVisibility(View.GONE);
+        btnLang.setVisibility(View.VISIBLE);
+        btnSave.setVisibility(View.VISIBLE);
+        btnOptions.setVisibility(View.VISIBLE);
+        btnReset.setVisibility(View.VISIBLE);
+    }
+
     //Listener methods
     private void onInvert(View v) {
         if (controls != null) controls.setInvert(btnInvert.isChecked());
@@ -168,10 +200,11 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
     private void onSave(View v) {
         //TODO: Implement save
+        //Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
+        if (viewMandelbrot != null) viewMandelbrot.startSave();
 
-
-        Intent i = new Intent(Intent.ACTION_APPLICATION_PREFERENCES);
-        startActivity(i);
+        //Intent i = new Intent(Intent.ACTION_APPLICATION_PREFERENCES);
+        //startActivity(i);
     }
 
     private void onLang(View v) {
@@ -254,10 +287,10 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if (seekBar == sbIterate) {
-            txtIterate.setText(getString(R.string.txt_iterations_en, progress));
+            txtIterate.setText(getString(R.string.txt_iterations, progress));
             if (controls != null) controls.setIterations(progress);
         } else if (seekBar == sbThreshold) {
-            txtThreshold.setText(getString(R.string.txt_threshold_en, progress / 100.0));
+            txtThreshold.setText(getString(R.string.txt_threshold, progress / 100.0));
             if (controls != null) controls.setThreshold(progress / 100.0f);
         }
     }

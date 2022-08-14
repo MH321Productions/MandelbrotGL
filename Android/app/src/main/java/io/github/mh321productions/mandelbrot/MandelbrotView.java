@@ -35,6 +35,10 @@ public class MandelbrotView extends GLSurfaceView {
         init();
     }
 
+    public void startSave() {
+        renderer.startSave();
+    }
+
     private void init() {
         setEGLContextClientVersion(3);
         setPreserveEGLContextOnPause(true);

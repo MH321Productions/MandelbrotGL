@@ -49,25 +49,25 @@
                     android:id="@+id/rdbtnFirstNone"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="@string/rdbtn_none_en" />
+                    android:text="@string/rdbtn_none" />
 
                 <RadioButton
                     android:id="@+id/rdbtnFirstRed"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="@string/rdbtn_red_en" />
+                    android:text="@string/rdbtn_red" />
 
                 <RadioButton
                     android:id="@+id/rdbtnFirstGreen"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="@string/rdbtn_green_en" />
+                    android:text="@string/rdbtn_green" />
 
                 <RadioButton
                     android:id="@+id/rdbtnFirstBlue"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="@string/rdbtn_blue_en" />
+                    android:text="@string/rdbtn_blue" />
 
             </RadioGroup>
 
@@ -75,19 +75,19 @@
                 android:id="@+id/txtPrimColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_prim_color_en"
+                android:text="@string/txt_prim_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.05"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.17000002" />
+                app:layout_constraintVertical_bias="0.100000024" />
 
             <TextView
                 android:id="@+id/txtSecColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_sec_color_en"
+                android:text="@string/txt_sec_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.025"
@@ -111,28 +111,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:enabled="false"
-                    android:text="@string/rdbtn_none_en" />
+                    android:text="@string/rdbtn_none" />
 
                 <RadioButton
                     android:id="@+id/rdbtnSecRed"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:enabled="false"
-                    android:text="@string/rdbtn_red_en" />
+                    android:text="@string/rdbtn_red" />
 
                 <RadioButton
                     android:id="@+id/rdbtnSecGreen"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:enabled="false"
-                    android:text="@string/rdbtn_green_en" />
+                    android:text="@string/rdbtn_green" />
 
                 <RadioButton
                     android:id="@+id/rdbtnSecBlue"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:enabled="false"
-                    android:text="@string/rdbtn_blue_en" />
+                    android:text="@string/rdbtn_blue" />
 
             </RadioGroup>
 
@@ -140,13 +140,13 @@
                 android:id="@+id/btnInvert"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:text="@string/txt_invert_en"
+                android:text="@string/txt_invert"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.976"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.485" />
+                app:layout_constraintVertical_bias="0.26" />
 
             <SeekBar
                 android:id="@+id/sbIterations"
@@ -167,7 +167,7 @@
                 android:id="@+id/txtIterations"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_iterations_en"
+                android:text="@string/txt_iterations"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.023"
@@ -179,7 +179,7 @@
                 android:id="@+id/txtThreshold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_threshold_en"
+                android:text="@string/txt_threshold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.517"
@@ -210,8 +210,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:contentDescription="@string/txt_reset_en"
-        android:tooltipText="@string/txt_save_en"
+        android:contentDescription="@string/txt_reset"
+        android:tooltipText="@string/txt_save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.023"
@@ -225,8 +225,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:contentDescription="@string/txt_reset_en"
-        android:tooltipText="@string/txt_reset_en"
+        android:contentDescription="@string/txt_reset"
+        android:tooltipText="@string/txt_reset"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
@@ -240,9 +240,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:contentDescription="@string/txt_options_en"
-        android:enabled="false"
-        android:tooltipText="@string/txt_options_en"
+        android:contentDescription="@string/txt_options"
+        android:tooltipText="@string/txt_options"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.976"
@@ -265,5 +264,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.045"
         app:srcCompat="@drawable/ic_flag_en" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/viewSave"
+        android:name="io.github.mh321productions.mandelbrot.SaveFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

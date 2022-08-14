@@ -1,11 +1,16 @@
 package io.github.mh321productions.mandelbrot;
 
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -21,6 +26,7 @@ public class MandelbrotRenderer implements GLSurfaceView.Renderer {
     private MainActivity main;
     public MandelbrotControls controls;
     private AssetManager assMan;
+    private boolean runSave = false;
 
     //GL variables
     private int shaderId = 0, vertexId = 0, indexId = 0, vaoId = 0;
@@ -43,6 +49,10 @@ public class MandelbrotRenderer implements GLSurfaceView.Renderer {
         this.main = main;
         this.assMan = assMan;
         controls = new MandelbrotControls(main);
+    }
+
+    public void startSave() {
+        runSave = true;
     }
 
     @Override
@@ -97,8 +107,25 @@ public class MandelbrotRenderer implements GLSurfaceView.Renderer {
         controls.transferUniformValues();
 
         //Draw call
-
         GLES30.glDrawElements(GLES30.GL_TRIANGLES, indexData.length, GLES30.GL_UNSIGNED_BYTE, 0);
+
+        if (runSave) {
+            File dir = new File(main.getFilesDir(), "images");
+            dir.mkdir();
+            File f = new File(dir, "Screenshot.png");
+            boolean success = saveImage(controls.getWindowWidth(), controls.getWindowHeight(), f.getPath());
+
+            if (!success) {
+                Toast.makeText(main.getApplicationContext(), R.string.txt_save_failed, Toast.LENGTH_SHORT).show();
+                runSave = false;
+                return;
+            }
+
+            Handler h = new Handler(Looper.getMainLooper());
+            h.post(new ImageCreator(main));
+
+            runSave = false;
+        }
     }
 
     private boolean loadShader() {
@@ -164,4 +191,6 @@ public class MandelbrotRenderer implements GLSurfaceView.Renderer {
 
         return id;
     }
+
+    private native boolean saveImage(int width, int height, String path);
 }

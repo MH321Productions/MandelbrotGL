@@ -94,6 +94,14 @@ public class MandelbrotControls {
         updateColorMap();
     }
 
+    public int getWindowWidth() {
+        return windowWidth;
+    }
+
+    public int getWindowHeight() {
+        return windowHeight;
+    }
+
     public void setIterations(int iterations) {
         this.iterations = iterations;
     }
